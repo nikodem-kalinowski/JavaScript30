@@ -75,9 +75,20 @@
 
     function seconds(){
       let second = document.querySelector('.second-hand')
-      let currentTime = new Date().getSeconds()
-      let handPosition = currentTime*6
-      second.style.transform = `rotate(${90 + handPosition}deg)`
+      let minute = document.querySelector('.min-hand')
+      let hour = document.querySelector('.hour-hand')
+
+      let currentSecond = new Date().getSeconds()
+      let currentMinute = new Date().getMinutes()
+      let currentHour = new Date().getHours()
+
+      let positionSecond = currentSecond*6
+      let positionMinute = currentMinute*6
+      let positionHour = currentHour*30
+
+      second.style.transform = `rotate(${90 +positionSecond}deg)`
+      minute.style.transform = `rotate(${90 + positionMinute}deg)`
+      hour.style.transform = `rotate(${ 120 + positionHour}deg)`
     }
 
     (setInterval(seconds, 1000))
