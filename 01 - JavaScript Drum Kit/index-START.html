@@ -59,6 +59,18 @@
 
 <script>
 
+  document.body.onkeydown = function playSound(event){
+    let pressedKey = event.keyCode
+    let sound = document.querySelector(`audio[data-key="${pressedKey}"]`)
+    let element = document.querySelector(`div[data-key="${pressedKey}"]`)
+    if (sound) {
+      sound.currentTime = 0
+      element.className = 'key playing sound'
+      sound.play();
+    }
+    element.className = 'key'
+  }
+
 </script>
 
 
