@@ -62,11 +62,26 @@
       background:black;
       position: absolute;
       top:50%;
+      transform-origin: 100%;
+      transform: rotate(90deg)
     }
+
 
   </style>
 
   <script>
+
+    (function() {
+
+    function seconds(){
+      let second = document.querySelector('.second-hand')
+      let currentTime = new Date().getSeconds()
+      let handPosition = currentTime*6
+      second.style.transform = `rotate(${90 + handPosition}deg)`
+    }
+
+    (setInterval(seconds, 1000))
+    })();
 
 
   </script>
