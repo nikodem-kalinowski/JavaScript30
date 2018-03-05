@@ -59,17 +59,24 @@
 
 <script>
 
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
   document.body.onkeydown = function playSound(event){
     let pressedKey = event.keyCode
     let sound = document.querySelector(`audio[data-key="${pressedKey}"]`)
     let element = document.querySelector(`div[data-key="${pressedKey}"]`)
     if (sound) {
+      element.classList.add('playing')
       sound.currentTime = 0
-      element.className = 'key playing sound'
       sound.play();
     }
-    element.className = 'key'
   }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 </script>
 
