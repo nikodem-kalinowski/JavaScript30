@@ -60,6 +60,13 @@
   </style>
 
   <script>
+      const inputs = document.querySelectorAll('.controls input');
+
+      function showValue(){
+        console.log(this.value)
+      }
+      inputs.forEach(ele => ele.addEventListener('mousemove', showValue))
+      inputs.forEach(ele => ele.addEventListener('change', showValue))
   </script>
 
 </body>
