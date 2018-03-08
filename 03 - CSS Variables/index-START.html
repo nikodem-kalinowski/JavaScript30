@@ -62,11 +62,13 @@
   <script>
       const inputs = document.querySelectorAll('.controls input');
 
-      function showValue(){
-        console.log(this.value)
+      function handleChange(){
+        const value = this.dataset.sizing ? this.value + this.dataset.sizing : this.value
+        document.documentElement.style.setProperty(`--${this.name}`, value)
       }
-      inputs.forEach(ele => ele.addEventListener('mousemove', showValue))
-      inputs.forEach(ele => ele.addEventListener('change', showValue))
+
+      inputs.forEach(ele => ele.addEventListener('mousemove', handleChange))
+      inputs.forEach(ele => ele.addEventListener('change', handleChange))
   </script>
 
 </body>
