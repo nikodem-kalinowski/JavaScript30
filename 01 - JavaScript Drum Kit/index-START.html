@@ -64,7 +64,7 @@
     e.target.classList.remove('playing');
   }
 
-  document.body.onkeydown = function playSound(event){
+  function playSound(event){
     let pressedKey = event.keyCode
     let sound = document.querySelector(`audio[data-key="${pressedKey}"]`)
     let element = document.querySelector(`div[data-key="${pressedKey}"]`)
@@ -77,6 +77,7 @@
 
   const keys = Array.from(document.querySelectorAll('.key'));
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound)
 
 </script>
 
