@@ -23,13 +23,13 @@ const list = document.querySelector('.suggestions')
   function value() {
     list.innerHTML='';
     const filter = input.value
-    const output = cities.filter(e => e.city.includes(`${filter}`))
+    const output = cities.filter(e => e.city.includes(`${filter}`) || e.state.includes(`${filter}`) )
     output.forEach(ele => updateList(ele))
   }
 
   function updateList(ele) {
     const node = document.createElement("LI")
-    const textNode = document.createTextNode(ele.city)
+    const textNode = document.createTextNode(`${ele.city} ${ele.state} ${ele.population}`)
     node.appendChild(textNode)
     list.appendChild(node)
   }
